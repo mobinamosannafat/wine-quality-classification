@@ -36,29 +36,70 @@ In our project, we implement three distinct classification models to address the
 
 ### Logistic Regression
 
-  Type: Linear model designed for binary classification.
-  Idea: Logistic Regression models the probability that an instance belongs to a particular class. It employs the logistic function to map a linear combination of input features to a value between 0 and 1.
-Hypotheses Class: logistic function (sigmoid function) which can be represented as $( h_θ (x)=  1/(1+ e^(-(θ^T x)) )$.
-Training/Learning Objective: Minimizing the logistic loss (binary cross-entropy) during training, which can be represented as $(J(θ)= -1/M ∑_(i=1)^m▒〖[y^((i) )  log⁡(h_θ (x^((i) ) ))+(1-y^((i)))log⁡〖(1-h_θ (x^((i) )))〗])$.
+	Type: A linear model designed for binary classification.
+	Idea: Logistic Regression models the probability that an instance belongs to a particular class. It employs the logistic function to map a linear combination of input features to a value between 0 and 1.
+	Hypotheses Class: logistic function (sigmoid function).
+	Training/Learning Objective: Minimizing the logistic loss (binary cross-entropy) during training.
+
 
 Support Vector Machines (SVM)
 
 	Type: Linear and non-linear classifier.
 	Idea: SVM aims to find a hyperplane that optimally separates data points of different classes in a high-dimensional space. It prioritizes maximizing the margin between classes, and for non-linear problems, it can utilize kernel functions to map features into a higher-dimensional space.
-	Hypotheses Class: Decision function which can be represented as f(x)= 〖argmax〗_k (〈w_(k,),x〉  + b_k).
-	Training/Learning Objective: Maximizing the margin between different classes while ensuring correct classification, which can be represented as
- 〖min〗_(w,b)   1/2  ‖w‖^2+C∑_(i=1)^m▒〖max⁡(0,1-y_i (〈w,x_i 〉+b))〗.
+	Hypotheses Class: Decision function.
+	Training/Learning Objective: Maximizing the margin between different classes while ensuring correct classification.
 
 
 2-Layer Perceptron
 
 	Type: Fully connected feedforward neural network tailored for binary classification.
 	Idea: A neural network with one hidden layer processes input features through weights and biases, applying activation functions to introduce non-linearity. This architecture enables the model to capture more intricate relationships in the data compared to linear models.
-	Hypotheses Class: Composition of multiple layers with non-linear activation functions which can be represented as h(x)= σ(W_2  .σ(W_1  .x+ b_1 )+ b_2) .
-	Training/Learning Objective: minimizing the cross-entropy loss during training, which can be represented as
- J(W,b)= -1/M ∑_(i=1)^m▒〖[y^((i) )  log⁡(h_θ (x^((i) ) ))+(1-y^((i)))log⁡〖(1-h_θ (x^((i) )))〗]〗
+	Hypotheses Class: Composition of multiple layers with non-linear activation functions.
+	Training/Learning Objective: minimizing the cross-entropy loss during training.
 
 
 The measure of success for all classification methods in this project is validation and test accuracy.
+
+## Hyper Parameter Tuning
+
+In the hyperparameter tuning phase, we systematically explored the impact of different values for the learning rate and batch size on each classification model based on the validation accuracy. Specifically, we considered three learning rates—0.001, 0.01, and 0.1—and three batch sizes—10, 100, and 1000.
+
+The purpose of this exploration is to identify the combination of learning rate and batch size that optimizes the performance of each model. By varying these hyperparameters, we aim to fine-tune the training process and enhance the overall effectiveness of the models in classifying wine quality.
+
+In the subsequent analysis, we will report and examine the model performance under each combination of learning rate and batch size, providing insights into the hyperparameter settings that yield the best results for our specific classification task.
+
+
+## Results
+
+
+Due to constraints in hardware resources and time limitations, we were restricted to training the models for up to 100,000 epochs. Notably, the deep neural network (DNN) model did not converge within this specified epoch limit. It is crucial to acknowledge that the final outcome may differ if we had the capacity to train the model for an extended number of epochs. Consequently, the subsequent reports and conclusions are based on the outcomes obtained within the given epoch constraint.
+
+Training Details:
+
+All classification models underwent training for a substantial 10,000 epochs, providing an extensive learning process for each model.
+
+
+Validation Performance Analysis
+
+Table 2 presents the validation performance (accuracy) of each model across different combinations of learning rates and batch sizes. Notably, the results indicate optimal hyperparameter settings for maximizing performance.
+
+- Optimal Learning Rates:
+  1. Logistic Regression: 0.01
+  2. Support Vector Machines (SVM): 0.1
+  3. Neural Networks: 0.1
+
+- Optimal Batch Sizes:
+  1. Logistic Regression: 10
+  2. Support Vector Machines (SVM): 100
+  3. Neural Networks: 1000
+
+
+Performance Comparison:
+
+Figure 2 visually represents the comparative performance of Logistic Regression, SVM, and Neural Networks for wine quality classification. The observed trend aligns with the ordered mention of models, indicating that Deep Neural Networks, Logistic Regression, and SVM perform better in the same order they were mentioned. 
+
+![image](https://github.com/mobinamosannafat/wine-quality-classification/assets/52583295/cfa8a2d1-89c5-4c25-b212-e66fd2ff9c0d)
+![image](https://github.com/mobinamosannafat/wine-quality-classification/assets/52583295/b19f4106-fcb4-49eb-be4b-19a3329e51d6)
+
 
 
